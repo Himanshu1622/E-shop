@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block start %}
+
+<div class="container-fluid">
+    <div class="row mt-2">
+        <div class="col-md-6 col-sm-12 col-12">
+            {% if user.pic %}
+                <img src="{{ user.pic.url }}" alt="" class="w-100" >
+            {% else %}
+                <img src="{% static 'images/noimage.png' %}" alt="" class="w-100">
+            {% endif %}
+        </div>
+        <div class="col-md-6 col-sm-12 col-12">
+            <h5 class="background text-light p-2 text-center">Update Profile Section</h5>
+            {% for i in messages %}
+            <div class="alert alert-danger" role="alert">
+                {{i}}
+            </div>
+            {% endfor %}
+            <form class="mt-3" action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" name="name" class="form-control" id="name" value="{{user.name}}">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" name="email" class="form-control" id="email" value="{{user.email}}">
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input type="number" name="phone" class="form-control" id="phone" value="{{user.phone}}">
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <input type="text" name="address" class="form-control" id="address" value="{{user.address}}">
+                </div>
+                <div class="mb-3">
+                    <label for="pincode" class="form-label">Pincode</label>
+                    <input type="text" name="pincode" class="form-control" id="pincode" value="{{user.pincode}}">
+                </div>
+                <div class="mb-3">
+                    <label for="city" class="form-label">City</label>
+                    <input type="text" name="city" class="form-control" id="city" value="{{user.city}}">
+                </div>
+                <div class="mb-3">
+                    <label for="state" class="form-label">State</label>
+                    <input type="text" name="state" class="form-control" id="state" value="{{user.state}}">
+                </div>
+                <div class="mb-3">
+                    <input type="file" name="pic" class="form-control">
+                </div>
+                <button type="submit" class="btn background text-center text-light mb-1 w-100" style="background-color: blueviolet;">Update</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block start %}
+
+<div class="container-fluid">
+    <div class="row mt-2">
+        <div class="col-md-6 col-sm-12 col-12">
+            {% if user.pic %}
+            <img src="{{ user.pic.url }}" alt="" class="w-100">
+            {% else %}
+            <img src="{% static 'images/noimage.png' %}" alt="" class="w-100">
+            {% endif %}
+        </div>
+        <div class="col-md-6 col-sm-12 col-12">
+            <h5 class="background text-light p-2 text-center">Buyer Profile Section</h5>
+            <table class="table table-striped">
+                <tr>
+                    <th>Name</th>
+                    <td>{{user.name}}</td>
+                </tr>
+                <tr>
+                    <th>User Name</th>
+                    <td>{{user.username}}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{user.email}}</td>
+                </tr>
+                <tr>
+                    <th>Phone</th>
+                    <td>{{user.phone}}</td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td>{{user.address}}</td>
+                </tr>
+                <tr>
+                    <th>Pincode</th>
+                    <td>{{user.pincode}}</td>
+                </tr>
+                <tr>
+                    <th>City</th>
+                    <td>{{user.city}}</td>
+                </tr>
+                <tr>
+                    <th>State</th>
+                    <td>{{user.state}}</td>
+                </tr>
+                <tr>
+                    <th colspan="2"><a href="/updateProfile/" class="btn text-light w-100"
+                            style="background-color: blueviolet;">Update Profile Section</a></th>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,254 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block start %}
+
+<h5 class="text-center text-light background p-2 mt-2">Add products section</h5>
+
+<div class="container">
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" name="name" class="form-control" id="name" placeholder="Enter Product Name">
+        </div>
+        <div class="row mt-3">
+            <div class="col-lg-3 col-md-6 col-12">
+                <label class="form-label">Main-Category</label>
+                <select name="maincategory" class="form-control">
+                    {% for i in Maincategory %}
+                    <option value="{{i}}">{{i.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-lg-3 col-md-6 col-12">
+                <label class="form-label">Sub-Category</label>
+                <select name="subcategory" class="form-control">
+                    {% for i in Subcategory %}
+                    <option value="{{i}}">{{i.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-lg-3 col-md-6 col-12">
+                <label class="form-label">Brand</label>
+                <select name="brand" class="form-control">
+                    {% for i in Brand %}
+                    <option value="{{i}}">{{i.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-lg-3 col-md-6 col-12">
+                <label class="form-label">Stock</label>
+                <select name="stock" class="form-control">
+                    <option value="In-stock">In Stock</option>
+                    <option value="Out-of-stock">Out Of Stock</option>
+                </select>
+            </div>
+            <div class="col-md-6 col-12">
+                <div class="mb-3 mt-3">
+                    <label for="baseprice" class="form-label">Base Price</label>
+                    <input type="text" class="form-control" id="baseprice" name="baseprice"
+                        placeholder="Enter Product Price">
+                </div>
+            </div>
+            <div class="col-md-6 col-12">
+                <div class="mb-3 mt-3">
+                    <label for="discount" class="form-label">Discount</label>
+                    <input type="number" class="form-control" id="discount" name="discount" min="0" value="0"
+                        placeholder="Enter Discount">
+                </div>
+            </div>
+            <div class="col-md-6 col-12">
+                <div class="row mb-3">
+                    <label class="form-label">Size</label>
+                    <div class="row">
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="S" name="S">
+                                <label class="form-check-label" for="S">
+                                    S
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="SM" name="SM">
+                                <label class="form-check-label" for="SM">
+                                    SM
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="M" name="M">
+                                <label class="form-check-label" for="M">
+                                    M
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="L" name="L">
+                                <label class="form-check-label" for="L">
+                                    L
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="XL" name="XL">
+                                <label class="form-check-label" for="XL">
+                                    XL
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="XXL" name="XXL">
+                                <label class="form-check-label" for="XXL">
+                                    XXL
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="XXXL" name="XXXL">
+                                <label class="form-check-label" for="XXXL">
+                                    XXXL
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-12">
+                <label class="form-label">Color</label>
+                <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Red" name="Red">
+                            <label class="form-check-label" for="Red">
+                                Red
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Green" name="Green">
+                            <label class="form-check-label" for="Green">
+                                Green
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Yellow" name="Yellow">
+                            <label class="form-check-label" for="Yellow">
+                                Yellow
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Pink" name="Pink">
+                            <label class="form-check-label" for="Pink">
+                                Pink
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="White" name="White">
+                            <label class="form-check-label" for="White">
+                                White
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Black" name="Black">
+                            <label class="form-check-label" for="Black">
+                                Black
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Blue" name="Blue">
+                            <label class="form-check-label" for="Blue">
+                                Blue
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Brown" name="Brown">
+                            <label class="form-check-label" for="Brown">
+                                Brown
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="SkyBlue" name="SkyBlue">
+                            <label class="form-check-label" for="SkyBlue">
+                                SkyBlue
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Orange" name="Orange">
+                            <label class="form-check-label" for="Orange">
+                                Orange
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Navy" name="Navy">
+                            <label class="form-check-label" for="Navy">
+                                Navy
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Gray" name="Gray">
+                            <label class="form-check-label" for="Gray">
+                                Gray
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3 ">
+                <label for="description" class="form-label">Description</label>
+                <textarea name="description" id="description" rows="5"
+                    class="form-control">Enter Product Description</textarea>
+            </div>
+            <div class="col-lg-4 col-md-6 sm-12 ">
+                <div>
+                    <label for="pic1" class="form-label">Product Image</label>
+                    <input type="file" name="pic1" id="pic1" class="form-control">
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 sm-12 ">
+                <div>
+                    <label for="pic2" class="form-label">Product Image</label>
+                    <input type="file" name="pic2" id="pic2" class="form-control">
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 sm-12 ">
+                <div>
+                    <label for="pic3" class="form-label">Product Image</label>
+                    <input type="file" name="pic3" id="pic3" class="form-control">
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn w-100 text-light mt-2" style="background-color: blueviolet;">Add
+            Product</button>
+    </form>
+</div>
+
+{% endblock %}

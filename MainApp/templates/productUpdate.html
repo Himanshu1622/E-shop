@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block start %}
+
+<h5 class="text-center text-light background p-2 mt-2">Update products section</h5>
+
+<div class="container">
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" name="name" class="form-control" id="name" value="{{product.name}}">
+        </div>
+        <div class="row mt-3">
+            <div class="col-lg-3 col-md-6 col-12">
+                <label class="form-label">Main-Category</label>
+                <select name="maincategory" class="form-control">
+
+                    <!-- This line is use for show last Main Categories which is selected  -->
+                    <option value="{{product.maincategory}}">{{product.maincategory}}</option>
+                    {% for i in Maincategory %}
+                    <option value="{{i}}">{{i.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-lg-3 col-md-6 col-12">
+                <label class="form-label">Sub-Category</label>
+                <select name="subcategory" class="form-control">
+
+                    <!-- This line is use for show last SubCategories which is selected  -->
+                    <option value="{{product.subcategory}}">{{product.subcategory}}</option>
+                    {% for i in Subcategory %}
+                    <option value="{{i}}">{{i.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-lg-3 col-md-6 col-12">
+                <label class="form-label">Brand</label>
+                <select name="brand" class="form-control">
+                    
+                    <!-- This line is use for show last brand which is selected  -->
+                    <option value="{{product.brand}}">{{product.brand}}</option>
+                    {% for i in Brand %}
+                    <option value="{{i}}">{{i.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-lg-3 col-md-6 col-12">
+                <label class="form-label">Stock</label>
+                <select name="stock" class="form-control">
+                    <option value="In-stock">In Stock</option>
+                    <option value="Out-of-stock">Out Of Stock</option>
+                </select>
+            </div>
+            <div class="col-md-6 col-12">
+                <div class="mb-3 mt-3">
+                    <label for="baseprice" class="form-label">Base Price</label>
+                    <input type="text" class="form-control" id="baseprice" name="baseprice"
+                        value="{{product.baseprice}}">
+                </div>
+            </div>
+            <div class="col-md-6 col-12">
+                <div class="mb-3 mt-3">
+                    <label for="discount" class="form-label">Discount</label>
+                    <input type="number" class="form-control" id="discount" name="discount"
+                    value="{{product.discount}}">
+                </div>
+            </div>
+            <div class="col-md-6 col-12">
+                <label class="form-label">Size</label>
+                <select name="size" class="form-control">
+                    <option value="small">S</option>
+                    <option value="Medium">M</option>
+                    <option value="large">L</option>
+                    <option value="Extra large">xl</option>
+                </select>
+            </div>
+            <div class="col-md-6 col-12">
+                <div class="mb-3 ">
+                    <label for="color" class="form-label">Color</label>
+                    <input type="text" class="form-control" id="color" name="color" value="{{product.color}}">
+                </div>
+            </div>
+            <div class="mb-3 ">
+                <label for="description" class="form-label">Description</label>
+                <textarea name="description" id="description" rows="5"
+                    class="form-control">{{product.description}}</textarea>
+            </div>
+            <div class="col-lg-4 col-md-6 sm-12 ">
+                <div>
+                    <label for="pic1" class="form-label">Product Image</label>
+                    <input type="file" name="pic1" id="pic1" class="form-control">
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 sm-12 ">
+                <div>
+                    <label for="pic2" class="form-label">Product Image</label>
+                    <input type="file" name="pic2" id="pic2" class="form-control">
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 sm-12 ">
+                <div>
+                    <label for="pic3" class="form-label">Product Image</label>
+                    <input type="file" name="pic3" id="pic3" class="form-control">
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn w-100 text-light mt-2" style="background-color: blueviolet;">Update</button>
+    </form>
+</div>
+
+{% endblock %}

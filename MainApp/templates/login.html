@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block start %}
+
+<div class="container-fluid h-screen">
+    <div class="row mt-2">
+        <div class="col-md-6 col-sm-12 col-12">
+            <img src="{% static 'images/login.jpg' %}" alt="" class="w-100">
+        </div>
+        <div class="col-md-6 col-sm-12 col-12">
+            <h5 class="background text-light p-2 text-center">Login Section</h5>
+            {% for i in messages %}
+            <div class="alert alert-danger" role="alert">
+                {{i}}
+            </div>
+            {% endfor %}
+
+            <form class="mt-3" action="" method="post">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label for="username" class="form-label">Enter Username</label>
+                    <input type="text" name="username" class="form-control" id="username" placeholder="Enter UserName">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" id="password"
+                        placeholder="Enter Password">
+                </div>
+                <button type="submit" class="btn background text-center text-light mb-1 w-100"
+                    style="background-color: blueviolet;">Login</button>
+                <div class="d-flex justify-content-between">
+                    <a href="" class="text-decoration-none">Forgot Password</a>
+                    <a href="/signup/" class="text-decoration-none">New User ? Create a New Account</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block start %}
+
+<div class="container-fluid">
+    <div class="row mt-2">
+        <!-- Product Images  -->
+        <div class="col-md-6 col-12">
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="{{product.pic1.url}}" height="550px" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{{product.pic2.url}}" height="550px" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{{product.pic3.url}}" height="550px" class="d-block w-100" alt="...">
+                  </div>
+                </div>
+              </div>
+            <div class="mt-2 d-flex justify-content-between">
+                <img src="{{product.pic1.url}}" alt="" height="200px" width="33%" style="object-fit: cover;">
+                <img src="{{product.pic2.url}}" alt="" height="200px" width="33%" style="object-fit: cover;">
+                <img src="{{product.pic3.url}}" alt="" height="200px" width="33%" style="object-fit: cover;">
+            </div>
+        </div>
+
+        <!-- Product Details  -->
+        <div class="col-md-6 col-12">
+            <h6 class="text-center background p-2 text-light">{{product.name}}</h6>
+
+            <table class="table table-responsive table-light table-striped table-hover">
+                <tr>
+                    <th>Product Category</th>
+                    <td>{{product.maincategory}}</td>
+                </tr>
+                <tr>
+                    <th>Product Type</th>
+                    <td>{{product.subcategory}}</td>
+                </tr>
+                <tr>
+                    <th>Product Brand</th>
+                    <td>{{product.brand}}</td>
+                </tr>
+                <tr>
+                    <th>Product Color</th>
+                    <td>{{product.color}}</td>
+                </tr>
+                <tr>
+                    <th>Product Size</th>
+                    <td>{{product.size}}</td>
+                </tr>
+                <tr>
+                    <th>Product Stock</th>
+                    <td>{{product.stock}}</td>
+                </tr>
+                <tr>
+                    <th>Product BasePrice</th>
+                    <td>&#8377;<del>{{product.baseprice}}</del></td>
+                </tr>
+                <tr>
+                    <th>Product Discount</th>
+                    <td>{{product.discount}} %</td>
+                </tr>
+                <tr>
+                    <th>Product Final-Price</th>
+                    <td>{{product.finalprice}}</td>
+                </tr>
+                <tr>
+                    <th>Product Description</th>
+                    <td>{{product.description}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><a href="#" class="btn w-100 text-light" style="background-color: blueviolet;">Add to wishlist</a></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><a href="#" class="btn w-100 text-light" style="background-color: blueviolet;">Add to cart</a></td>
+                </tr>
+                
+            </table>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

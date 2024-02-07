@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block start %}
+
+<div class="container-fluid">
+    <div class="row mt-2">
+        <div class="col-md-6 col-sm-12 col-12">
+            <img src="{% static 'images/user.jpg' %}" alt="" class="w-100">
+        </div>
+        <div class="col-md-6 col-sm-12 col-12">
+            <h5 class="background text-light p-2 text-center">Signup Section</h5>
+            {% for i in messages %}
+            <div class="alert alert-danger" role="alert">
+                {{i}}
+            </div>
+            {% endfor %}
+            <form class="mt-3" action="" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Enter name">
+                </div>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" name="username" class="form-control" id="username" placeholder="Enter username">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" name="email" class="form-control" id="email" placeholder="Enter email address">
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input type="number" name="phone" class="form-control" id="phone"
+                        placeholder="Enter contact number">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" id="password"
+                        placeholder="Enter Password">
+                </div>
+                <div class="mb-3">
+                    <label for="cpassword" class="form-label">Confirm Password</label>
+                    <input type="password" name="cpassword" class="form-control" id="cpassword"
+                        placeholder="Confirm Password">
+                </div>
+                <div class="mb-3">
+                    <label for="actype" class="form-label">Account Type</label>
+                    <select name="actype" class="form-control">
+                        <option value="seller">Seller</option>
+                        <option value="buyer">Buyer</option>
+                    </select>
+
+                </div>
+                <button type="submit" class="btn background text-center text-light mb-1 w-100"
+                    style="background-color: blueviolet;">Sign Up</button>
+
+                <a href="/login/" class="text-decoration-none">Already user ? Login</a>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

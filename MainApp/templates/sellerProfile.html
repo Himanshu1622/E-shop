@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block start %}
+
+<div class="container-fluid">
+    <div class="row mt-2">
+        <div class="col-md-6 col-sm-12 col-12">
+            {% if user.pic %}
+            <img src="{{ user.pic.url }}" alt="" class="w-100">
+            {% else %}
+            <img src="{% static 'images/noimage.png' %}" alt="" class="w-100">
+            {% endif %}
+        </div>
+        <div class="col-md-6 col-sm-12 col-12">
+            <h5 class="background text-light p-2 text-center">Seller Profile Section</h5>
+            <table class="table table-striped">
+                <tr>
+                    <th>Name</th>
+                    <td>{{user.name}}</td>
+                </tr>
+                <tr>
+                    <th>User Name</th>
+                    <td>{{user.username}}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{user.email}}</td>
+                </tr>
+                <tr>
+                    <th>Phone</th>
+                    <td>{{user.phone}}</td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td>{{user.address}}</td>
+                </tr>
+                <tr>
+                    <th>Pincode</th>
+                    <td>{{user.pincode}}</td>
+                </tr>
+                <tr>
+                    <th>City</th>
+                    <td>{{user.city}}</td>
+                </tr>
+                <tr>
+                    <th>State</th>
+                    <td>{{user.state}}</td>
+                </tr>
+                <tr>
+                    <th colspan="2"><a href="/updateProfile/" class="btn text-light w-100"
+                            style="background-color: blueviolet;">Update Profile Section</a></th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <h5 class="text-center background mt-1 text-light p-1">Product Section
+        <a href="/add-products/" class="text-decoration-none text-light"><svg xmlns="http://www.w3.org/2000/svg"
+                width="32" height="32" fill="currentColor" class="bi bi-plus mb-1" viewBox="0 0 16 16">
+                <path
+                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+            </svg>
+        </a>
+    </h5>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tr>
+                <th>Product Image</th>
+                <th>Name</th>
+                <th>Color</th>
+                <th>Size</th>
+                <th>Base Price</th>
+                <th>Discount %</th>
+                <th>Final Price</th>
+                <th>Stock</th>
+                <th></th>
+                <th></th>
+            </tr>
+            {% for i in product %}
+            <tr>
+                <td>
+                    {% if i.pic1 %}
+                    <img src="{{i.pic1.url}}" alt="" style="height: 100px; width: 100px;">
+                    {% else %}
+                    <img src="{% static 'images/noimageu.png' %}" alt="" style="height: 100px; width: 100px;">
+                    {% endif %}
+
+                </td>
+                <td>{{i.name}}</td>
+                <td>{{i.color}}</td>
+                <td>{{i.size}}</td>
+                <td>&#8377;{{i.baseprice}}</td>
+                <td>{{i.discount}}</td>
+                <td>{{i.finalprice}}</td>
+                <td>{{i.stock}}</td>
+                <td>
+                    <a href="/update-product/{{i.id}}/" class="btn text-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-pen-fill" viewBox="0 0 16 16">
+                            <path
+                                d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001" />
+                        </svg>
+                    </a>
+                </td>
+                <td>
+                    <!-- <button class="btn text-danger" onclick="ProductDelete('{{i.id}}')"> -->
+                    <a href="/delete-product/{{i.id}}/" class="btn text-danger">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-trash-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0" />
+                        </svg>
+                    </a>
+                    <!-- </button> -->
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+<!-- <script>
+    function ProductDelete(id){
+        if(confirm(`Are You sure to Delete ${id} Product !`)){
+            window.open(`/delete-product/${id}`)
+        }
+    }
+</script> -->
+
+{% endblock %}
