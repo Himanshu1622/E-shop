@@ -151,8 +151,50 @@ def addProduct(request):
         product.baseprice = int(request.POST.get('baseprice'))
         product.discount = int(request.POST.get('discount'))
         product.finalprice = product.baseprice - product.baseprice*product.discount/100
-        product.color = request.POST.get('color')
-        product.size = request.POST.get('size')
+        color =''
+        if (request.POST.get('Red')):
+            color = color + 'Red,'
+        if (request.POST.get('Green')):
+            color = color + 'Green,'
+        if (request.POST.get('Yellow')):
+            color = color + 'Yellow,'
+        if (request.POST.get('Pink')):
+            color = color + 'Pink,'
+        if (request.POST.get('White')):
+            color = color + 'White,'
+        if (request.POST.get('Black')):
+            color = color + 'Black,'
+        if (request.POST.get('Blue')):
+            color = color + 'Blue,'
+        if (request.POST.get('Brown')):
+            color = color + 'Brown,'
+        if (request.POST.get('SkyBlue')):
+            color = color + 'SkyBlue,'
+        if (request.POST.get('Orange')):
+            color = color + 'Orange,'
+        if (request.POST.get('Navy')):
+            color = color + 'Navy,'
+        if (request.POST.get('Gray')):
+            color = color + 'Gray,'
+        product.color = color
+        # product.color = request.POST.get('color')
+        # product.size = request.POST.get('size')
+        size = ''
+        if (request.POST.get('S')):
+            size = size + 'S'
+        if (request.POST.get('SM')):
+            size = size + 'SM'
+        if (request.POST.get('M')):
+            size = size + 'M'
+        if (request.POST.get('L')):
+            size = size + 'L'
+        if (request.POST.get('XL')):
+            size = size + 'XL'
+        if (request.POST.get('XXL')):
+            size = size + 'XXL'
+        if (request.POST.get('XXXL')):
+            size = size + 'XXXL'
+        product.size = size
         product.description = request.POST.get('description')
         product.pic1 = request.FILES.get('pic1')
         product.pic2 = request.FILES.get('pic2')
@@ -198,8 +240,52 @@ def UpdateProduct(request, item):
             product.baseprice = int(request.POST.get('baseprice'))
             product.discount = int(request.POST.get('discount'))
             product.finalprice = product.baseprice - product.baseprice*product.discount/100
-            product.color = request.POST.get('color')
-            product.size = request.POST.get('size')
+            color =''
+            if (request.POST.get('Red')):
+                color = color + 'Red,'
+            if (request.POST.get('Green')):
+                color = color + 'Green,'
+            if (request.POST.get('Yellow')):
+                color = color + 'Yellow,'
+            if (request.POST.get('Pink')):
+                color = color + 'Pink,'
+            if (request.POST.get('White')):
+                color = color + 'White,'
+            if (request.POST.get('Black')):
+                color = color + 'Black,'
+            if (request.POST.get('Blue')):
+                color = color + 'Blue,'
+            if (request.POST.get('Brown')):
+                color = color + 'Brown,'
+            if (request.POST.get('SkyBlue')):
+                color = color + 'SkyBlue,'
+            if (request.POST.get('Orange')):
+                color = color + 'Orange,'
+            if (request.POST.get('Navy')):
+                color = color + 'Navy,'
+            if (request.POST.get('Gray')):
+                color = color + 'Gray,'
+            product.color = color
+            # product.color = request.POST.get('color')
+            # product.size = request.POST.get('size')
+            size = ''
+            if (request.POST.get('S')):
+                size = size + 'S,'
+            if (request.POST.get('SM')):
+                size = size + 'SM,'
+            if (request.POST.get('M')):
+                size = size + 'M,'
+            if (request.POST.get('L')):
+                size = size + 'L,'
+            if (request.POST.get('XL')):
+                size = size + 'XL,'
+            if (request.POST.get('XXL')):
+                size = size + 'XXL,'
+            if (request.POST.get('XXXL')):
+                size = size + 'XXXL,'
+            product.size = size
+            # product.color = request.POST.get('color')
+            # product.size = request.POST.get('size')
             product.description = request.POST.get('description')
             if(request.FILES.get('pic1')):
                 if(product.pic1):

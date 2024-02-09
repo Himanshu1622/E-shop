@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load product %}
 {% load static %}
 
 {% block start %}
@@ -38,7 +39,7 @@
             <div class="col-lg-3 col-md-6 col-12">
                 <label class="form-label">Brand</label>
                 <select name="brand" class="form-control">
-                    
+
                     <!-- This line is use for show last brand which is selected  -->
                     <option value="{{product.brand}}">{{product.brand}}</option>
                     {% for i in Brand %}
@@ -64,22 +65,241 @@
                 <div class="mb-3 mt-3">
                     <label for="discount" class="form-label">Discount</label>
                     <input type="number" class="form-control" id="discount" name="discount"
-                    value="{{product.discount}}">
+                        value="{{product.discount}}">
                 </div>
             </div>
             <div class="col-md-6 col-12">
-                <label class="form-label">Size</label>
-                <select name="size" class="form-control">
-                    <option value="small">S</option>
-                    <option value="Medium">M</option>
-                    <option value="large">L</option>
-                    <option value="Extra large">xl</option>
-                </select>
+                <div class="row mb-3">
+                    <label class="form-label">Size</label>
+                    <div class="row">
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                            <div class="form-check">
+                                {% if product.size|checkSize:'S' %}
+                                <input class="form-check-input" type="checkbox" value="S" name="S" checked>
+                                {% else %}
+                                <input class="form-check-input" type="checkbox" value="S" name="S">
+                                {% endif %}
+                                <label class="form-check-label" for="S">S</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                            <div class="form-check">
+                                {% if product.size|checkSize:'SM' %}
+                                <input class="form-check-input" type="checkbox" value="SM" name="SM" checked>
+                                {% else %}
+                                <input class="form-check-input" type="checkbox" value="SM" name="SM">
+                                {% endif %}
+                                <label class="form-check-label" for="SM">SM</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                            <div class="form-check">
+                                {% if product.size|checkSize:'M' %}
+                                <input class="form-check-input" type="checkbox" value="M" name="M" checked>
+                                {% else %}
+                                <input class="form-check-input" type="checkbox" value="M" name="M">
+                                {% endif %}
+                                <label class="form-check-label" for="M">
+                                    M
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                            <div class="form-check">
+                                {% if product.size|checkSize:'L' %}
+                                <input class="form-check-input" type="checkbox" value="L" name="L" checked>
+                                {% else %}
+                                <input class="form-check-input" type="checkbox" value="L" name="L">
+                                {% endif %}
+                                <label class="form-check-label" for="L">
+                                    L
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                            <div class="form-check">
+                                {% if product.size|checkSize:'XL' %}
+                                <input class="form-check-input" type="checkbox" value="XL" name="XL" checked>
+                                {% else %}
+                                <input class="form-check-input" type="checkbox" value="XL" name="XL">
+                                {% endif %}
+                                <label class="form-check-label" for="XL">
+                                    XL
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                            <div class="form-check">
+                                {% if product.size|checkSize:'XXL' %}
+                                <input class="form-check-input" type="checkbox" value="XXL" name="XXL" checked>
+                                {% else %}
+                                <input class="form-check-input" type="checkbox" value="XXL" name="XXL">
+                                {% endif %}
+                                <label class="form-check-label" for="XXL">
+                                    XXL
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                            <div class="form-check">
+                                {% if product.size|checkSize:'XXXL' %}
+                                <input class="form-check-input" type="checkbox" value="XXXL" name="XXXL" checked>
+                                {% else %}
+                                <input class="form-check-input" type="checkbox" value="XXXL" name="XXXL">
+                                {% endif %}
+                                <label class="form-check-label" for="XXXL">
+                                    XXXL
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-md-6 col-12">
-                <div class="mb-3 ">
-                    <label for="color" class="form-label">Color</label>
-                    <input type="text" class="form-control" id="color" name="color" value="{{product.color}}">
+                <label class="form-label">Color</label>
+                <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="form-check">
+                            {% if product.color|checkColor:'Red' %}
+                            <input class="form-check-input" type="checkbox" value="Red" name="Red" checked>
+                            {% else %}
+                            <input class="form-check-input" type="checkbox" value="Red" name="Red">
+                            {% endif %}
+                            <label class="form-check-label" for="Red">Red</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="form-check">
+                            {% if product.color|checkColor:'Green' %}
+                            <input class="form-check-input" type="checkbox" value="Green" name="Green" checked>
+                            {% else %}
+                            <input class="form-check-input" type="checkbox" value="Green" name="Green" checked>
+                            {% endif %}
+                            <label class="form-check-label" for="Green">
+                                Green
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="form-check">
+                            {% if product.color|checkColor:'Yellow' %}
+                            <input class="form-check-input" type="checkbox" value="Yellow" name="Yellow" checked>
+                            {% else %}
+                            <input class="form-check-input" type="checkbox" value="Yellow" name="Yellow">
+                            {% endif %}
+                            <label class="form-check-label" for="Yellow">
+                                Yellow
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="form-check">
+                            {% if product.color|checkColor:'Pink' %}
+                            <input class="form-check-input" type="checkbox" value="Pink" name="Pink" checked>
+                            {% else %}
+                            <input class="form-check-input" type="checkbox" value="Pink" name="Pink">
+                            {% endif %}
+                            <label class="form-check-label" for="Pink">
+                                Pink
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="form-check">
+                            {% if product.color|checkColor:'White' %}
+                            <input class="form-check-input" type="checkbox" value="White" name="White" checked>
+                            {% else %}
+                            <input class="form-check-input" type="checkbox" value="White" name="White">
+                            {% endif %}
+                            <label class="form-check-label" for="White">
+                                White
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="form-check">
+                            {% if product.color|checkColor:'Black' %}
+                            <input class="form-check-input" type="checkbox" value="Black" name="Black" checked>
+                            {% else %}
+                            <input class="form-check-input" type="checkbox" value="Black" name="Black">
+                            {% endif %}
+                            <label class="form-check-label" for="Black">
+                                Black
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="form-check">
+                            {% if product.color|checkColor:'Blue' %}
+                            <input class="form-check-input" type="checkbox" value="Blue" name="Blue" checked>
+                            {% else %}
+                            <input class="form-check-input" type="checkbox" value="Blue" name="Blue">
+                            {% endif %}
+                            <label class="form-check-label" for="Blue">
+                                Blue
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="form-check">
+                            {% if product.color|checkColor:'Brown' %}
+                            <input class="form-check-input" type="checkbox" value="Brown" name="Brown" checked>
+                            {% else %}
+                            <input class="form-check-input" type="checkbox" value="Brown" name="Brown">
+                            {% endif %}
+                            <label class="form-check-label" for="Brown">
+                                Brown
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="form-check">
+                            {% if product.color|checkColor:'SkyBlue' %}
+                            <input class="form-check-input" type="checkbox" value="SkyBlue" name="SkyBlue" checked>
+                            {% else %}
+                            <input class="form-check-input" type="checkbox" value="SkyBlue" name="SkyBlue">
+                            {% endif %}
+                            <label class="form-check-label" for="SkyBlue">
+                                SkyBlue
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="form-check">
+                            {% if product.color|checkColor:'Orange' %}
+                            <input class="form-check-input" type="checkbox" value="Orange" name="Orange" checked>
+                            {% else %}
+                            <input class="form-check-input" type="checkbox" value="Orange" name="Orange">
+                            {% endif %}
+                            <label class="form-check-label" for="Orange">
+                                Orange
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="form-check">
+                            {% if product.color|checkColor:'Navy' %}
+                            <input class="form-check-input" type="checkbox" value="Navy" name="Navy" checked>
+                            {% else %}
+                            <input class="form-check-input" type="checkbox" value="Navy" name="Navy">
+                            {% endif %}
+                            <label class="form-check-label" for="Navy">
+                                Navy
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="form-check">
+                            {% if product.color|checkColor:'Gray' %}
+                            <input class="form-check-input" type="checkbox" value="Gray" name="Gray" checked>
+                            {% else %}
+                            <input class="form-check-input" type="checkbox" value="Gray" name="Gray">
+                            {% endif %}
+                            <label class="form-check-label" for="Gray">
+                                Gray
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="mb-3 ">
