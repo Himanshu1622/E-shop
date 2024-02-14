@@ -102,7 +102,8 @@ def profile(request):
 
        except:
         buyer = Buyer.objects.get(username = request.user)
-        return render(request, 'buyerProfile.html', {"user":buyer , "title": "Buyer Profile"})
+        wishlist = Wishlist.objects.filter(buyer = buyer)
+        return render(request, 'buyerProfile.html', {"user":buyer, "wishlist":wishlist, "title": "Buyer Profile"})
         
 
 @login_required(login_url='/login/')
@@ -311,9 +312,43 @@ def UpdateProduct(request, item):
 
 def singleProduct(request, id):
     product = Product.objects.get(id = id)
-    context = {'title': 'Product Page','product': product}
+    color = product.color.split(',')
+    color = color[:-1]
+    size = product.size.split(',')
+    size = size[:-1]
+    context = {'title': 'Product Page','product': product,"color":color, "size":size}
     return render(request , "singleProduct.html",context)  
 
+def wishList(request , id):
+    try:
+        buyer = Buyer.objects.get(username = request.user)
+        wishlist = Wishlist.objects.filter(buyer=buyer)
+        product = Product.objects.get(id = id)
+        item = False 
+        for i in wishlist:
+            if(i.product == product):
+                item = True
+                break
+        if(item == False ):
+            wishlist = Wishlist()
+            wishlist.buyer = buyer
+            wishlist.product = product
+            wishlist.save()
+        return redirect("/profile/")
+    except:
+        return redirect("/profile/")
+
+
+@login_required(login_url='/login/')
+def deleteWishlist(request, id):
+    try:
+        wishlist = Wishlist.objects.get(id = id)
+        buyer = Buyer.objects.get(username = request.user)
+        if(wishlist.buyer == buyer):
+            wishlist.delete()
+        return redirect('/profile/')
+    except:
+        return redirect('/profile/')
 
 
 def logout(request):

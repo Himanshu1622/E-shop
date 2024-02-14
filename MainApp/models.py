@@ -75,3 +75,12 @@ class Buyer(models.Model):
 
     def __str__(self):
         return str(self.id)+" "+self.name
+    
+
+class Wishlist(models.Model):
+    id = models.AutoField(primary_key=True)
+    buyer = models.ForeignKey(Buyer, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.id)+" "+self.buyer.username

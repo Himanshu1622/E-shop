@@ -9,5 +9,6 @@ admin.site.register((
     Brand,
     Product,
     Seller,
-    Buyer
+    Buyer,
+    Wishlist
 ))

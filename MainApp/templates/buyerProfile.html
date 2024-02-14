@@ -55,4 +55,62 @@
         </div>
     </div>
 
+    <h5 class="text-center background mt-1 text-light p-2">Wishlist Section</h5>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tr>
+                <th>Product Image</th>
+                <th>Name</th>
+                <th>Color</th>
+                <th>Size</th>
+                <th>Base Price</th>
+                <th>Discount %</th>
+                <th>Final Price</th>
+                <th>Stock</th>
+                <th></th>
+                <th></th>
+            </tr>
+            {% for i in wishlist %}
+            <tr>
+                <td>
+                    {% if i.product.pic1 %}
+                    <img src="{{ i.product.pic1.url }}" alt="" style="height: 100px; width: 100px;">
+                    {% else %}
+                    <img src="{% static 'images/noimageu.png' %}" alt="" style="height: 100px; width: 100px;">
+                    {% endif %}
+
+                </td>
+                <td>{{i.product.name}}</td>
+                <td>{{i.product.color}}</td>
+                <td>{{i.product.size}}</td>
+                <td>&#8377;{{i.product.baseprice}}</td>
+                <td>{{i.product.discount}}</td>
+                <td>{{i.product.finalprice}}</td>
+                <td>{{i.product.stock}}</td>
+                <td>
+                    <a href="/single-product/{{i.product.id}}/" class="btn text-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-cart-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                        </svg>
+                    </a>
+                </td>
+                <td>
+                    <!-- <button class="btn text-danger" onclick="ProductDelete('{{i.id}}')"> -->
+                    <a href="/delete-wishlist/{{i.id}}/" class="btn text-danger">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-trash-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0" />
+                        </svg>
+                    </a>
+                    <!-- </button> -->
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
 {% endblock %}

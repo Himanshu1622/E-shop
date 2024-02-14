@@ -18,4 +18,7 @@ urlpatterns = [
     path('delete-product/<item>/',deleteProduct),
     path('update-product/<item>/',UpdateProduct),
     path('single-product/<id>/',singleProduct),
+    path('add-to-wishlist/<id>/',wishList),
+    path('delete-wishlist/<id>/',deleteWishlist),
+
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

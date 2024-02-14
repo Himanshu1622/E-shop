@@ -46,11 +46,23 @@
                 </tr>
                 <tr>
                     <th>Color</th>
-                    <td>{{product.color}}</td>
+                    <td>
+                        <select name="color" class="form-control w-25">
+                            {% for i in color %}
+                            <option value="{{i}}">{{i}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
                 </tr>
                 <tr>
                     <th>Size</th>
-                    <td>{{product.size}}</td>
+                    <td>
+                        <select name="size" class="form-control w-25">
+                            {% for i in size %}
+                            <option value="{{i}}">{{i}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
                 </tr>
                 <tr>
                     <th>Stock</th>
@@ -73,10 +85,10 @@
                     <td>{{product.description}}</td>
                 </tr>
                 <tr>
-                    <td colspan="2"><a href="#" class="btn w-100 text-light" style="background-color: blueviolet;">Add to wishlist</a></td>
+                    <td colspan="2"><a href="#" class="btn w-100 text-light" style="background-color: blueviolet;">Add to cart</a></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><a href="#" class="btn w-100 text-light" style="background-color: blueviolet;">Add to cart</a></td>
+                    <td colspan="2"><a href="/add-to-wishlist/{{product.id}}" class="btn w-100 text-light" style="background-color: blueviolet;">Add to wishlist</a></td>
                 </tr>
                 
             </table>
