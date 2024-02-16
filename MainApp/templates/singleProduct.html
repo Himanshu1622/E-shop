@@ -9,17 +9,17 @@
         <div class="col-md-6 col-12">
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img src="{{product.pic1.url}}" height="550px" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="{{product.pic2.url}}" height="550px" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="{{product.pic3.url}}" height="550px" class="d-block w-100" alt="...">
-                  </div>
+                    <div class="carousel-item active">
+                        <img src="{{product.pic1.url}}" height="550px" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{product.pic2.url}}" height="550px" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{product.pic3.url}}" height="550px" class="d-block w-100" alt="...">
+                    </div>
                 </div>
-              </div>
+            </div>
             <div class="mt-2 d-flex justify-content-between">
                 <img src="{{product.pic1.url}}" alt="" height="200px" width="33%" style="object-fit: cover;">
                 <img src="{{product.pic2.url}}" alt="" height="200px" width="33%" style="object-fit: cover;">
@@ -31,7 +31,7 @@
         <div class="col-md-6 col-12">
             <h6 class="text-center background p-2 text-light">{{product.name}}</h6>
 
-            <table class="table table-responsive table-light table-striped table-hover">
+            <table class="table table-light table-striped table-hover">
                 <tr>
                     <th>Category</th>
                     <td>{{product.maincategory}}</td>
@@ -45,52 +45,58 @@
                     <td>{{product.brand}}</td>
                 </tr>
                 <tr>
-                    <th>Color</th>
-                    <td>
-                        <select name="color" class="form-control w-25">
-                            {% for i in color %}
-                            <option value="{{i}}">{{i}}</option>
-                            {% endfor %}
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Size</th>
-                    <td>
-                        <select name="size" class="form-control w-25">
-                            {% for i in size %}
-                            <option value="{{i}}">{{i}}</option>
-                            {% endfor %}
-                        </select>
-                    </td>
-                </tr>
-                <tr>
                     <th>Stock</th>
                     <td>{{product.stock}}</td>
                 </tr>
                 <tr>
-                    <th>BasePrice</th>
+                    <th>Base Price</th>
                     <td>&#8377;<del>{{product.baseprice}}</del></td>
                 </tr>
                 <tr>
                     <th>Discount</th>
-                    <td>{{product.discount}} %</td>
+                    <td>{{product.discount}}</td>
                 </tr>
                 <tr>
-                    <th>Final-Price</th>
+                    <th>Final Price</th>
                     <td>{{product.finalprice}}</td>
                 </tr>
+                <form action="/add-to-cart/" method="post">
+                    {% csrf_token %}
+                    <tr>
+                        <th>Color</th>
+                        <td>
+                            <select name="color" class="form-control">
+                                {% for i in color %}
+                                <option value="{{i}}">{{i}}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Size</th>
+                        <td>
+                            <select name="size" class="form-control">
+                                {% for i in size %}
+                                <option value="{{i}}">{{i}}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{product.description}}</td>
+                    </tr>
+                    <tr>
+                        <input type="hidden" name="pid" value="{{product.id}}">
+                        <th colspan="2"><button type="submit" class="btn text-light w-100"
+                                style="background-color: blueviolet;">Add to Cart</button></th>
+                    </tr>
+                </form>
                 <tr>
-                    <th>Description</th>
-                    <td>{{product.description}}</td>
+                    <th colspan="2"><a href="/add-to-wishlist/{{product.id}}/" class="btn text-light w-100"
+                            style="background-color: blueviolet;">Add to Wishlist</a>
+                    </th>
                 </tr>
-                <tr>
-                    <td colspan="2"><a href="#" class="btn w-100 text-light" style="background-color: blueviolet;">Add to cart</a></td>
-                </tr>
-                <tr>
-                    <td colspan="2"><a href="/add-to-wishlist/{{product.id}}" class="btn w-100 text-light" style="background-color: blueviolet;">Add to wishlist</a></td>
-                </tr>
-                
             </table>
         </div>
 

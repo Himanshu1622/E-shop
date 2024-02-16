@@ -20,5 +20,7 @@ urlpatterns = [
     path('single-product/<id>/',singleProduct),
     path('add-to-wishlist/<id>/',wishList),
     path('delete-wishlist/<id>/',deleteWishlist),
+    path('add-to-cart/',addToCart),
+    path('cart/',Cart)
 
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

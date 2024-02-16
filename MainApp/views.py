@@ -355,3 +355,38 @@ def logout(request):
     auth.logout(request)
     return redirect('/login/')
 
+
+@login_required(login_url='/login/')
+def addToCart(request):
+    pid = request.POST.get('pid')
+    color = request.POST.get('color')
+    size = request.POST.get('size')
+    cart = request.session.get("cart",None)
+    if(cart):
+        if(pid in cart.keys() and color==cart[pid][1] and size==cart[pid][2]):
+            pass
+        else:
+            count = len(cart.keys())
+            count=count+1
+            cart.setdefault(str(count),[pid,1,color,size])  
+    else:
+        cart = {"1":[pid,1,color,size]}
+    
+    request.session['cart']=cart
+    return redirect('/cart/')
+
+
+def Cart(request):
+    cart = request.session.get("cart",None)
+    total = 0
+    shipping = 0
+    final = 0
+    if(cart):
+        for value in cart.values():
+            p = Product.objects.get(id=int(value[0]))
+            total= total + p.finalprice
+        if(len(cart.values()) >=1 and total<1000):
+            shipping=150
+        final=total+shipping
+
+    return render(request,"cart.html",{'title': 'Cart',"Cart":cart,"Total":total,"Shipping":shipping,"Final":final})
